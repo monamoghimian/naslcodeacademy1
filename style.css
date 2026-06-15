@@ -255,54 +255,28 @@ footer {
 }
 
 @media (max-width: 768px) {
-    header { padding: 15px; }
-    
+    /* 1. کانتینر هدر را عمودی کنید */
     .header-container { 
         flex-direction: column; 
         gap: 15px; 
     }
 
-    /* نمایش دکمه همبرگری در موبایل */
+    /* 2. دکمه همبرگری نمایش داده شود */
     .hamburger { 
         display: block !important; 
-        cursor: pointer; 
-        padding: 5px;
-    }
-    
-    .hamburger .line { 
-        width: 25px; height: 3px; background: white; margin: 5px 0; 
     }
 
-    /* تنظیمات منوی کشویی در موبایل */
+    /* 3. منوی nav-menu در حالت عادی در موبایل مخفی باشد */
     .nav-menu {
-        display: none; /* پیش‌فرض مخفی */
+        display: none; 
         flex-direction: column;
-        position: absolute;
-        top: 110px; /* تنظیم ارتفاع دقیق بر اساس هدر شما */
-        right: 0;
         width: 100%;
         background: #1D285F;
         text-align: center;
-        padding: 10px 0;
-        z-index: 999;
     }
 
-    /* وقتی روی دکمه کلیک شد، این کلاس فعال می‌شود */
+    /* 4. فقط وقتی کلاس active گرفت نمایش داده شود */
     .nav-menu.active { 
         display: flex !important; 
     }
-
-    .nav-menu a { 
-        padding: 15px; 
-        display: block; 
-        border-bottom: 1px solid #ffffff22; 
-        color: white;
-    }
-    
-    .card { width: 90%; }
-}
-
-/* برای دسکتاپ: دکمه همبرگری حتما باید مخفی باشد */
-@media (min-width: 769px) {
-    .hamburger { display: none !important; }
 }
