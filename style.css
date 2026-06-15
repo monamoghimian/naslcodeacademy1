@@ -263,16 +263,16 @@ footer {
 
     /* 2. دکمه همبرگری نمایش داده شود */
     .hamburger { 
-        display: block !important; 
+        display: none !important; 
+        position: absolute; /* این باعث می‌شود از چیدمان هدر خارج شود */
     }
 
     /* 3. منوی nav-menu در حالت عادی در موبایل مخفی باشد */
-    .nav-menu {
-        display: none; 
-        flex-direction: column;
-        width: 100%;
-        background: #1D285F;
-        text-align: center;
+        .nav-menu {
+        display: flex !important; /* در دسکتاپ همیشه نمایش داده شود */
+        position: static;        /* به حالت معمولی برگردد */
+        background: transparent;  /* پس‌زمینه نداشته باشد */
+        padding: 0;
     }
 
     /* 4. فقط وقتی کلاس active گرفت نمایش داده شود */
