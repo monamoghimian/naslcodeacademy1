@@ -255,17 +255,27 @@ footer {
 }
 
 /* 6. رسپانسیو */
+/* کدهای قبلی را در موبایل بازنویسی (Override) می‌کنیم */
 @media (max-width: 768px) {
     header { padding: 15px; }
-    .header-container { flex-direction: column; gap: 15px; }
-    nav { gap: 10px; }
+    
+    .header-container { 
+        flex-direction: column; 
+        gap: 15px; 
+    }
+    
+    /* این بخش حیاتی است */
+    nav { 
+        display: none !important; /* منوی قبلی را به زور مخفی می‌کنیم */
+    }
+
+    .nav-menu {
+        display: none; /* این همان منوی جدید است که با JS باز می‌شود */
+        /* بقیه استایل‌های منوی جدید... */
+    }
+    
     .card { width: 90%; }
 }
-/* تنظیم دکمه در دسکتاپ */
-.hamburger { display: none; cursor: pointer; padding: 10px; }
-.hamburger .line { width: 25px; height: 3px; background: white; margin: 5px 0; }
-
-@media (max-width: 768px) {
   /* نمایش دکمه در موبایل */
   .hamburger { display: block; }
 
