@@ -40,21 +40,34 @@
   </header>
 
   <section class="hero">
-    <div class="swiper hero-slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="images/pythonimage.png" alt="توضیح عکس اول">
-        </div>
-        <div class="swiper-slide">
-          <img src="images/scratchimage .png" alt="توضیح عکس دوم">
-        </div>
-        <div class="swiper-slide">
-          <img src="images/htmlimage.png" alt="توضیح عکس دوم">
-        </div>
+  <div class="swiper hero-slider">
+    <div class="swiper-wrapper">
+      
+      <div class="swiper-slide">
+        <picture>
+          <source media="(max-width: 768px)" srcset="images/pythonimagemobile.png">
+          <img src="images/pythonimage.png" alt="توضیح عکس اول" loading="eager">
+        </picture>
       </div>
-      <div class="swiper-pagination"></div>
-    </div>
 
+      <div class="swiper-slide">
+        <picture>
+          <source media="(max-width: 768px)" srcset="images/scratch-mobile.webp">
+          <img src="images/scratchimage.png" alt="توضیح عکس دوم" loading="lazy">
+        </picture>
+      </div>
+
+      <div class="swiper-slide">
+        <picture>
+          <source media="(max-width: 768px)" srcset="images/html-mobile.webp">
+          <img src="images/htmlimage.png" alt="توضیح عکس سوم" loading="lazy">
+        </picture>
+      </div>
+
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
     <div class="hero-content">
       <h1>دوره های آموزش کامپیوتر</h1>
       <h2 class="highlight">برنامه نویسی کودکان و نوجوانان</h2>
