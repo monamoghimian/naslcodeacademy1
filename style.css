@@ -1,0 +1,263 @@
+/* 1. تنظیمات پایه */
+
+/* تنظیمات فونت هوشمند */
+html[dir="rtl"] {
+    font-family: 'Vazirmatn', sans-serif;
+}
+html[dir="ltr"] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* برای اینکه جهت‌دهی خودکار انجام شود */
+body {
+    margin: 0;
+    background: #F8F9FA;
+    color: #1c1e29;
+}
+button,
+input,
+select,
+textarea {
+    font-family: inherit; /* این خط کلید ماجراست */
+}
+/* 2. هدر سرمه‌ای */
+header {
+    background: #1D285F;
+    padding: 20px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-wrapper {
+    width: 50px; 
+    height: 50px;
+    background: white; 
+    border-radius: 50%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    overflow: hidden;
+    /* حاشیه سفید برای هدر سرمه‌ای */
+    border: 2px solid #ffffff; 
+    transition: 0.4s ease;
+}
+
+
+.logo-wrapper:hover {
+    transform: scale(1.1); /* فقط بزرگنمایی، بدون rotate */
+    /*border-color: #ffc448; تغییر رنگ حاشیه به طلایی*/
+    cursor: pointer;
+}
+
+.main-logo { width: 100%; height: 100%; object-fit: cover; }
+
+.right-side { 
+    display: flex; 
+    align-items: center; /* لوگو و متن در یک راستا باشند */
+    gap: 15px; 
+}
+.brand-name { color: white; font-weight: bold; font-size: 18px; }
+.brand-tagline { color: #cbd5e1; font-size: 11px; }
+
+.brand-info {
+    display: flex;
+    flex-direction: column; /* متن‌ها زیر هم */
+    justify-content: center; /* تراز عمودی در مرکز */
+    height: 50px; /* هم‌اندازه ارتفاع لوگو */
+}
+nav { display: flex; gap: 20px; }
+nav a { color: white; text-decoration: none; font-size: 16px; transition: 0.3s; }
+nav a:hover, nav a.active { color: #ffc448; }
+
+
+/* اصلاح حاشیه دکمه هدر */
+.header-btn {
+    background: #ffc448; 
+    color: #1D285F; 
+    padding: 10px 20px;
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-weight: bold;
+}
+.lang-btn {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid white;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.lang-btn:hover {
+    background: white;
+    color: #1D285F;
+}
+.left-side-cta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* 3. بخش Hero */
+/* بخش Hero با پس‌زمینه روشن و ظاهر مدرن */
+/* ۱. تغییر کلاس هیرو برای لایه‌بندی */
+.hero {
+    position: relative; /* برای اینکه متن‌ها بتوانند داخل آن مطلق چیده شوند */
+    width: 100%;
+    height: auto; /* هم‌اندازه اسلایدر */
+    min-height: 400px;
+    padding: 0; /* پدینگ را حذف کردیم چون محتوا با فلکس‌باکس وسط‌چین می‌شود */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* ۲. تنظیم اسلایدر به عنوان لایه زیرین */
+.hero .hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* زیر متن‌ها */
+}
+
+
+/* ۳. تنظیم متن‌ها به عنوان لایه رویی */
+.hero .hero-content {
+    position: relative;
+    pointer-events: none; /* متن‌ها کلیک را مسدود نمی‌کنند */
+    z-index: 2; /* روی اسلایدر */
+    text-align: center;
+    /* background: rgba(255, 255, 255, 0.7); کمی پس‌زمینه شفاف برای خوانایی بهتر متن روی عکس */
+    padding: 40px;
+    border-radius: 20px;
+    /* backdrop-filter: blur(5px); افکت مات‌کننده جذاب */
+
+    /* وسط‌چین کردن محتوا */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    color: white; /* رنگ سفید برای خوانایی روی عکس */
+}
+.hero .hero-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* اصلاح استایل‌های متن برای خوانایی روی اسلایدر */
+.hero h1 { font-size: 36px; color: #ffffff; margin-bottom: 5px; }
+.hero .highlight { font-size: 44px; color: #d99c1d; margin: 0 0 10px 0; display: block; }
+.hero p { font-size: 18px; color: #ffffff; margin-bottom: 30px; font-weight: 600; }
+
+.hero-content h1, .hero-content h2, .hero-content p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* سایه مشکی برای خوانایی */
+  }
+
+/* دکمه */
+.hero .btn {
+    background: #FF8C00;
+    color: white;
+    padding: 12px 35px;
+    border-radius: 8px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+/* فعال کردن مجدد کلیک برای دکمه */
+.hero-content .btn {
+    pointer-events: auto; /* این دستور باعث می‌شود دکمه دوباره به موس واکنش نشان دهد */
+}
+
+/* افکت هاور برای زیبایی بیشتر */
+.hero-content .btn:hover {
+    background: #1D285F; /* رنگ نارنجی که با تم سایت‌تان همخوانی دارد */
+    transform: scale(1.05); /* یک افکت کوچک برای زنده شدن دکمه */
+}
+
+/* 4. کارت‌ها (اصلاح چیدمان) */
+.courses {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    width: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    border-bottom: 4px solid #ffb000;
+    position: relative;
+    overflow: hidden;
+    /* اضافه کردن موج به عنوان پس‌زمینه */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 150' preserveAspectRatio='none'%3E%3Cpath fill='%23ffc448' d='M0,50 C150,150 350,0 500,100 L500,150 L0,150 Z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 80px; /* تنظیم ارتفاع موج */
+    
+}
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 100px;
+    height: 100px;
+    background: #1D285F;
+    border-radius: 50%;
+    top: -50px;
+    right: -50px;
+    opacity: 0.2;
+}
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1;
+}
+
+
+/* 5. فوتر روشن */
+footer {
+    background: #F8F9FA;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 40px;
+}
+
+/* 6. رسپانسیو */
+@media (max-width: 768px) {
+    header { padding: 15px; }
+    .header-container { flex-direction: column; gap: 15px; }
+    nav { gap: 10px; }
+    .card { width: 90%; }
+}
