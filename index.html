@@ -14,36 +14,31 @@
 
 <body>
   <header>
-  <div class="header-container">
-    <div class="right-side">
-      <div class="logo-wrapper">
-        <img src="images/logo.webp" alt="آکادمی نسل کد" class="main-logo" />
+    <div class="header-container">
+      <div class="right-side">
+        <div class="logo-wrapper">
+          <img src="images/logo.webp" alt="آکادمی نسل کد" class="main-logo" />
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">آکادمی نسل کد</span>
+          <span class="brand-tagline">آموزش تخصصی کودک و نوجوان</span>
+        </div>
       </div>
-      <div class="brand-info">
-        <span class="brand-name">آکادمی نسل کد</span>
-        <span class="brand-tagline">آموزش تخصصی کودک و نوجوان</span>
+
+      <nav>
+        <a href="index.html" class="active">خانه</a>
+        <a href="courses.html">دوره‌ها</a>
+        <a href="portfolio.html">درباره ما</a>
+        <a href="contact.html">تماس</a>
+      </nav>
+
+      <div class="left-side-cta">
+        <a href="en/index.html" class="lang-btn">EN</a>
+        <a href="tel:09120000000" class="header-btn">مشاوره رایگان</a>
       </div>
     </div>
+  </header>
 
-    <div class="hamburger" id="hamburger">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </div>
-
-    <nav class="nav-menu" id="nav-menu">
-      <a href="index.html" class="active">خانه</a>
-      <a href="courses.html">دوره‌ها</a>
-      <a href="portfolio.html">درباره ما</a>
-      <a href="contact.html">تماس</a>
-    </nav>
-
-    <div class="left-side-cta">
-      <a href="en/index.html" class="lang-btn">EN</a>
-      <a href="tel:09120000000" class="header-btn">مشاوره رایگان</a>
-    </div>
-  </div>
-</header>
   <section class="hero">
     <div class="swiper hero-slider">
       <div class="swiper-wrapper">
@@ -212,17 +207,6 @@
       },
     });
   </script>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-  });
-</script>
 </body>
 
 </html>
