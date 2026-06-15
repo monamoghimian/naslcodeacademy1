@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasl Code Academy</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  </head>
+
+  <body>
+    <header>
+    <div class="header-container">
+        <div class="right-side">
+            <div class="logo-wrapper">
+                <img src="../images/logo.png" alt="Nasl Code Academy" class="main-logo" />
+            </div>
+            <div class="brand-info">
+                <span class="brand-name">Nasl Code Academy</span>
+                <span class="brand-tagline">Specialized Coding for Kids & Teens</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="portfolio.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="left-side-cta">
+            <a href="../index.html" class="lang-btn">FA</a>
+            <a href="tel:09120000000" class="header-btn">Free Consultation</a>
+        </div>
+    </div>
+</header>
+
+<section class="hero"> 
+    <div class="swiper hero-slider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="../images/pythonimage.png" alt="توضیح عکس اول">
+      </div>
+      <div class="swiper-slide">
+        <img src="../images/scratchimage .png" alt="توضیح عکس دوم">
+      </div>
+      <div class="swiper-slide">
+        <img src="../images/htmlimage.png" alt="توضیح عکس دوم">
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <div class="hero-content">
+    <h1>Computer Science Courses</h1>
+    <h2 class="highlight">Coding for Kids & Teens</h2>
+    <p>Journey into the world of computing with Nasl Code Academy...</p>
+    <button class="btn">View Courses</button>
+  </div>
+
+</section>
+
+    <section class="courses">
+      <div class="card">
+        <h3>Scratch</h3>
+        <p>Game & Animation Building</p>
+      </div>
+
+      <div class="card">
+        <h3>Python</h3>
+        <p>Start Real Programming</p>
+      </div>
+
+      <div class="card">
+        <h3>HTML</h3>
+        <p>Design Your First Website</p>
+      </div>
+    </section>
+
+    <section style="text-align: center; padding: 50px">
+      <h2>Why Nasl Code Academy?</h2>
+      <p>Simple, Project-based learning suitable for kids and teens</p>
+
+      <div class="courses">
+        <div class="card">
+          <h3>🎯 Project-Based</h3>
+          <p>Learn by building real projects</p>
+        </div>
+
+        <div class="card">
+          <h3>👨‍👩‍👧 Parent-Friendly</h3>
+          <p>Clear and reliable educational path</p>
+        </div>
+
+        <div class="card">
+          <h3>🚀 Future Skills</h3>
+          <p>Preparing for the digital world</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Register for Courses</h2>
+
+      <form id="registerForm">
+        <input type="text" id="name" placeholder="Your Name" />
+        <input type="text" id="phone" placeholder="Phone Number" />
+
+        <select id="course">
+          <option value="">Select Course</option>
+          <option value="scratch">Scratch</option>
+          <option value="python">Python</option>
+          <option value="html">HTML</option>
+        </select>
+
+        <button type="submit" class="btn" id="submitBtn">Send Request</button>
+      </form>
+
+      <p id="message"></p>
+    </section>
+
+    <footer>© Nasl Code Academy - All rights reserved</footer>
+    
+    <script>
+      emailjs.init("XNgoQP8glPQOUVkwX");
+
+      document.getElementById("registerForm").addEventListener("submit", function (e) {
+          e.preventDefault();
+          let name = document.getElementById("name").value;
+          let phone = document.getElementById("phone").value;
+          let course = document.getElementById("course").value;
+          let message = document.getElementById("message");
+          let btn = document.getElementById("submitBtn");
+
+          if (name === "" || phone === "" || course === "") {
+            message.style.color = "red";
+            message.innerText = "Please fill in all fields ❌";
+            return;
+          }
+          if (!/^09\d{9}$/.test(phone)) {
+            message.style.color = "red";
+            message.innerText = "Invalid phone number ❌";
+            return;
+          }
+          btn.disabled = true;
+          btn.innerText = "Sending... ⏳";
+          
+          emailjs.send("service_td7dvpf", "template_vigjxce", { name: name, phone: phone, course: course })
+            .then(function() {
+                message.style.color = "green";
+                message.innerText = "Request sent successfully ✔️";
+                document.getElementById("registerForm").reset();
+            })
+            .catch(function() {
+                message.style.color = "red";
+                message.innerText = "Error sending request ❌";
+            })
+            .finally(function() {
+                btn.disabled = false;
+                btn.innerText = "Send Request";
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+  const swiper = new Swiper('.hero-slider', {
+    effect: 'fade', // افکت محو شدن
+    loop: true,
+    autoplay: {
+      delay: 4000, // 4 ثانیه
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>
+  </body>
+</html>

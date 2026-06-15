@@ -1,0 +1,242 @@
+/* 1. تنظیمات پایه */
+
+/* تنظیمات فونت هوشمند */
+html[dir="rtl"] {
+    font-family: 'Vazirmatn', sans-serif;
+}
+html[dir="ltr"] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* برای اینکه جهت‌دهی خودکار انجام شود */
+body {
+    margin: 0;
+    background: #F8F9FA;
+    color: #1c1e29;
+}
+button,
+input,
+select,
+textarea {
+    font-family: inherit; /* این خط کلید ماجراست */
+}
+/* 2. هدر سرمه‌ای */
+header {
+    background: #1D285F;
+    padding: 20px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-wrapper {
+    width: 50px; 
+    height: 50px;
+    background: white; 
+    border-radius: 50%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    overflow: hidden;
+    /* حاشیه سفید برای هدر سرمه‌ای */
+    border: 2px solid #ffffff; 
+    transition: 0.4s ease;
+}
+
+
+.logo-wrapper:hover {
+    transform: scale(1.1); /* فقط بزرگنمایی، بدون rotate */
+    /*border-color: #ffc448; تغییر رنگ حاشیه به طلایی*/
+    cursor: pointer;
+}
+
+.main-logo { width: 100%; height: 100%; object-fit: cover; }
+
+.right-side { 
+    display: flex; 
+    align-items: center; /* لوگو و متن در یک راستا باشند */
+    gap: 15px; 
+}
+.brand-name { color: white; font-weight: bold; font-size: 18px; }
+.brand-tagline { color: #cbd5e1; font-size: 11px; }
+
+.brand-info {
+    display: flex;
+    flex-direction: column; /* متن‌ها زیر هم */
+    justify-content: center; /* تراز عمودی در مرکز */
+    height: 50px; /* هم‌اندازه ارتفاع لوگو */
+}
+nav { display: flex; gap: 20px; }
+nav a { color: white; text-decoration: none; font-size: 16px; transition: 0.3s; }
+nav a:hover, nav a.active { color: #ffc448; }
+
+
+/* اصلاح حاشیه دکمه هدر */
+.header-btn {
+    background: #ffc448; 
+    color: #1D285F; 
+    padding: 10px 20px;
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-weight: bold;
+}
+.lang-btn {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid white;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.lang-btn:hover {
+    background: white;
+    color: #1D285F;
+}
+.left-side-cta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* 3. بخش Hero */
+/* بخش Hero با پس‌زمینه روشن و ظاهر مدرن */
+.hero {
+    background: #ffffff; /* زمینه کاملاً سفید و روشن */
+    padding: 80px 20px;
+    text-align: center;
+    /* این سایه ملایم باعث می‌شود بخش هیرو کمی "بالاتر" از کارت‌ها به نظر برسد */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); 
+    position: relative;
+    z-index: 10;
+}
+/* عنوان و متن با چیدمان سایت نمونه */
+.hero h1 {
+    font-size: 36px;
+    color: #1c1e29;
+    margin-bottom: 5px;
+}
+
+.hero .highlight {
+    font-size: 44px;
+    color: #ffc448; /* طلایی */
+    margin: 0 0 10px 0;
+    display: block; /* باعث می‌شود در خط جداگانه قرار بگیرد */
+}
+
+.hero p {
+    font-size: 18px;
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+/* دکمه سرمه‌ای که با هدر ست شده است */
+.hero .btn {
+    background: #1D285F; /* سرمه‌ای */
+    color: white;
+    padding: 12px 35px;
+    border-radius: 8px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero .btn:hover {
+    background: #2b3a96; /* کمی روشن‌تر هنگام هاور */
+    transform: translateY(-2px);
+}
+.btn {
+    background: #ffc448; color: #1D285F; padding: 12px 30px;
+    border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
+}
+
+.hero-slider {
+  width: 100%;
+  height: 500px; /* ارتفاع دلخواه برای هیرو */
+}
+
+.hero-slider .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* برای اینکه عکس‌ها در اسلایدر کشیده نشوند */
+}
+
+/* 4. کارت‌ها (اصلاح چیدمان) */
+.courses {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    width: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    border-bottom: 4px solid #ffb000;
+    position: relative;
+    overflow: hidden;
+    /* اضافه کردن موج به عنوان پس‌زمینه */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 150' preserveAspectRatio='none'%3E%3Cpath fill='%23ffc448' d='M0,50 C150,150 350,0 500,100 L500,150 L0,150 Z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 80px; /* تنظیم ارتفاع موج */
+    
+}
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 100px;
+    height: 100px;
+    background: #1D285F;
+    border-radius: 50%;
+    top: -50px;
+    right: -50px;
+    opacity: 0.1;
+}
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1;
+}
+
+
+/* 5. فوتر روشن */
+footer {
+    background: #F8F9FA;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 40px;
+}
+
+/* 6. رسپانسیو */
+@media (max-width: 768px) {
+    header { padding: 15px; }
+    .header-container { flex-direction: column; gap: 15px; }
+    nav { gap: 10px; }
+    .card { width: 90%; }
+}

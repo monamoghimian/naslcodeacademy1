@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>آکادمی نسل کد</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="right-side">
+        <div class="logo-wrapper">
+          <img src="images/logo.png" alt="آکادمی نسل کد" class="main-logo" />
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">آکادمی نسل کد</span>
+          <span class="brand-tagline">آموزش تخصصی کودک و نوجوان</span>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html" class="active">خانه</a>
+        <a href="courses.html">دوره‌ها</a>
+        <a href="portfolio.html">درباره ما</a>
+        <a href="contact.html">تماس</a>
+      </nav>
+
+      <div class="left-side-cta">
+        <a href="en/index.html" class="lang-btn">EN</a>
+        <a href="tel:09120000000" class="header-btn">مشاوره رایگان</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="swiper hero-slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/pythonimage.png" alt="توضیح عکس اول">
+        </div>
+        <div class="swiper-slide">
+          <img src="images/scratchimage .png" alt="توضیح عکس دوم">
+        </div>
+        <div class="swiper-slide">
+          <img src="images/htmlimage.png" alt="توضیح عکس دوم">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="hero-content">
+      <h1>دوره های آموزش کامپیوتر</h1>
+      <h2 class="highlight">برنامه نویسی کودکان و نوجوانان</h2>
+      <p>سفر به دنیای کامپیوتر با آکادمی نسل کد ...</p>
+      <button class="btn">دوره های آموزشی</button>
+    </div>
+
+  </section>
+
+
+  </div>
+
+  <section class="courses">
+    <div class="card">
+      <div class="content">
+        <h3>Scratch</h3>
+        <p>ساخت بازی و انیمیشن</p>
+      </div>
+
+
+    </div>
+
+
+
+    <div class="card">
+      <h3>Python</h3>
+      <p>شروع برنامه‌نویسی واقعی</p>
+
+    </div>
+
+    <div class="card">
+      <h3>HTML</h3>
+      <p>طراحی اولین سایت</p>
+
+    </div>
+  </section>
+
+  <section style="text-align: center; padding: 50px">
+    <h2>چرا آکادمی نسل کد؟</h2>
+    <p>آموزش ساده، پروژه‌محور و مناسب کودکان و نوجوانان</p>
+
+    <div class="courses">
+      <div class="card">
+        <h3>🎯 پروژه‌محور</h3>
+        <p>یادگیری با ساختن پروژه واقعی</p>
+      </div>
+
+      <div class="card">
+        <h3>👨‍👩‍👧 مناسب والدین</h3>
+        <p>مسیر آموزشی مشخص و قابل اعتماد</p>
+      </div>
+
+      <div class="card">
+        <h3>🚀 مهارت آینده</h3>
+        <p>آمادگی برای دنیای دیجیتال</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>ثبت‌نام در دوره‌ها</h2>
+
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="نام شما" />
+      <input type="text" id="phone" placeholder="شماره تماس" />
+
+      <select id="course">
+        <option value="">انتخاب دوره</option>
+        <option value="scratch">Scratch</option>
+        <option value="python">Python</option>
+        <option value="html">HTML</option>
+      </select>
+
+      <button type="submit" class="btn" id="submitBtn">ارسال درخواست</button>
+    </form>
+
+    <p id="message"></p>
+  </section>
+
+  <footer>© آکادمی نسل کد - همه حقوق محفوظ است</footer>
+  <script>
+    emailjs.init("XNgoQP8glPQOUVkwX");
+
+    document
+      .getElementById("registerForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let phone = document.getElementById("phone").value;
+        let course = document.getElementById("course").value;
+        let message = document.getElementById("message");
+        let btn = document.getElementById("submitBtn");
+
+        if (name === "" || phone === "" || course === "") {
+          message.style.color = "red";
+          message.innerText = "لطفاً همه فیلدها را پر کنید ❌";
+          return;
+        }
+        if (!/^09\d{9}$/.test(phone)) {
+          message.style.color = "red";
+          message.innerText = "شماره موبایل معتبر نیست ❌";
+          return;
+        }
+        // 🔥 شروع loading
+        btn.disabled = true;
+        btn.innerText = "در حال ارسال... ⏳";
+        btn.classList.add("loading");
+
+        sendEmail();
+        function sendEmail() {
+          emailjs
+            .send("service_td7dvpf", "template_vigjxce", {
+              name: name,
+              phone: phone,
+              course: course,
+            })
+            .then(function (response) {
+              message.style.color = "green";
+              message.innerText = "درخواست شما با موفقیت ارسال شد ✔️";
+
+              document.getElementById("registerForm").reset();
+            })
+            .catch(function (error) {
+              console.log(error);
+              message.style.color = "red";
+              message.innerText = "خطا در ارسال ❌";
+            })
+            .finally(function () {
+              // 🔥 پایان loading
+              btn.disabled = false;
+              btn.innerText = "ارسال درخواست";
+              btn.classList.remove("loading");
+            });
+        }
+      });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.hero-slider', {
+      effect: 'fade', // افکت محو شدن
+      loop: true,
+      autoplay: {
+        delay: 4000, // 4 ثانیه
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
+</body>
+
+</html>
